@@ -18,6 +18,7 @@ jobs:
           python-version: '3.9'
 
       # --- THIS IS THE FIX ---
+      # We force install the libraries directly, ignoring the text file
       - name: Force Install Dependencies
         run: |
           pip install feedparser python-telegram-bot
