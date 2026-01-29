@@ -1,9 +1,9 @@
-name: Cyber News Bot
+name: Cyber News Bot (FORCE FIX)
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Runs every hour
-  workflow_dispatch:      # Allows you to run it manually to test
+    - cron: '0 * * * *'
+  workflow_dispatch:
 
 jobs:
   run-bot:
@@ -17,12 +17,9 @@ jobs:
         with:
           python-version: '3.9'
 
-      # --- THIS IS THE FIX ---
-      # We force install the libraries directly, ignoring the text file
-      - name: Force Install Dependencies
+      - name: INSTALLED BY FORCE
         run: |
           pip install feedparser python-telegram-bot
-      # ---------------------
 
       - name: Run Bot Script
         env:
