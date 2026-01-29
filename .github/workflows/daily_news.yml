@@ -2,8 +2,8 @@ name: Cyber News Bot
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Runs every hour
-  workflow_dispatch:      # Allows you to run it manually to test
+    - cron: '0 * * * *'  # Runs at minute 0 of every hour (e.g., 9:00, 10:00)
+  workflow_dispatch:      # Allows you to click "Run Now" manually to test it
 
 jobs:
   run-bot:
@@ -17,12 +17,9 @@ jobs:
         with:
           python-version: '3.9'
 
-      # --- THIS IS THE FIX ---
-      # We force install the libraries directly, ignoring the text file
-      - name: Force Install Dependencies
+      - name: Install dependencies
         run: |
-          pip install feedparser python-telegram-bot
-      # ---------------------
+          pip install -r requirements.txt
 
       - name: Run Bot Script
         env:
